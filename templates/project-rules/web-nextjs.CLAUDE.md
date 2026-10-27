@@ -15,3 +15,4 @@
 - Never expose sensitive tokens in `NEXT_PUBLIC_*` or client bundles.
 - Validate all route handlers and server actions with Zod schemas.
 - Content Security Policy (CSP), anti-clickjacking (`X-Frame-Options`), and CSRF tokens active.
+

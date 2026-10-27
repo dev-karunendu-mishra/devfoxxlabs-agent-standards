@@ -181,3 +181,4 @@ if ($TargetProject) {
 Write-Host "`n==========================================================" -ForegroundColor Green
 Write-Host "   Installation Complete! All standards are active.       " -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Green
+

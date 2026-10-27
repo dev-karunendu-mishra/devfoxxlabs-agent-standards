@@ -28,3 +28,4 @@ Before installing a package, check `composer.json` and `package.json`.
 - Never trust the client for money, discounts, or prices.
 - Rate limit all public write routes (`throttle:60,1` or stricter for auth/OTP).
 - Implement DPDP legal endpoints: versioned `GET /legal/{slug}` and append-only `consent_records` ledger.
+

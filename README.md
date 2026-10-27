@@ -1,6 +1,6 @@
 # 🛡️ DevFoxx Labs — AI Agent Standards & Skills Ecosystem
 
-> **Author**: Karunendu (DevFoxx Labs)  
+> **Author**: Karunendu Mishra (DevFoxx Labs)  
 > **Version**: 1.0.0  
 > **Supported Agents**: Claude Code, Google Antigravity, Gemini CLI, Cursor, Windsurf, Cline, Codex, Amp, Aider, and Universal Agents (`~/.agents`).
 
@@ -155,5 +155,6 @@ When you modify skills or rules locally and want to pull them back into this rep
 
 ## 📄 License & Attribution
 
-Authored and maintained by **Karunendu** ([DevFoxx Labs](https://github.com/devfoxx)).  
+Authored and maintained by **Karunendu Mishra** ([DevFoxx Labs](https://github.com/dev-karunendu-mishra)).  
 Shared internally and across projects to maintain consistent engineering excellence across all AI pair programming workflows.
+

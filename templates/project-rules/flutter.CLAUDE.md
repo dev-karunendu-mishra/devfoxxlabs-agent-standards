@@ -27,3 +27,4 @@ This document defines mandatory architectural, styling, and layout standards for
 ## 5. Quality & Test Gates
 - Run `flutter analyze` — must be 100% clean (0 errors, 0 warnings).
 - Run `flutter test` — must pass 100% of unit and widget tests.
+

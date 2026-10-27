@@ -18,3 +18,4 @@ Applies to every frontend built — Web (React / Next.js / Vue / Angular / plain
 ## 3. Migration
 - If an existing project already uses a different icon library (e.g. legacy Lucide or Material Icons), list all instances and ask the owner before executing a bulk migration.
 - Write this rule into each project's own design system documentation upon initialization.
+

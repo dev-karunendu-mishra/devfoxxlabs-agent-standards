@@ -15,3 +15,4 @@ Applies to every database task in every stack (Laravel/Eloquent + `sql/*.sql`, P
 - Never copy real personal data to local/staging unmasked, and never paste rows into chat or logs.
 - Tests: throwaway DB only; migrations tested on existing rows and on the real engine for schema changes; rollback-on-failure and idempotency tests for money paths.
 - Write this rule (or a pointer to it) into each project's own rules file when setting a project up.
+

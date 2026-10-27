@@ -37,3 +37,4 @@ Know where you are, never break data, always ACID.
 - Schema changes are additive & backward-compatible (expand -> migrate -> contract).
 - Every multi-row write runs in a database transaction (`lockForUpdate` on shared rows).
 - Never copy unmasked production PII to local/staging environments.
+

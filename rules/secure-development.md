@@ -27,3 +27,4 @@ Applies to everything built: Laravel/PHP, Node.js/NestJS/Express, Next.js/React,
 - **Fraud & takeover:** new-device alerts, payout hold 24–72 h after email/phone/password/payout-account changes, velocity limits on payouts/refunds/coupons, admin review (two-person for large amounts).
 - **Resilience:** CDN/WAF in front with origin hidden, timeouts + size caps everywhere, circuit breakers for third parties, fail-closed flags to switch abused features off, phishing-resistant MFA on every owner console.
 - Write this rule (or a pointer to it) into each project's own rules file when setting a project up.
+
