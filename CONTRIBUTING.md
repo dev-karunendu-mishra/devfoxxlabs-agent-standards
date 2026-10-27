@@ -44,3 +44,4 @@ Every standard and skill added to this repository must satisfy:
 
 For questions or discussions, please open an Issue or start a Discussion on GitHub:
 👉 https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards/issues
+

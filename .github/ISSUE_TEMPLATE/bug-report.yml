@@ -27,3 +27,4 @@ body:
       description: OS (Windows/Mac/Linux), Agent (Claude Code / Gemini / Cursor / Windsurf), Shell version.
     validations:
       required: false
+

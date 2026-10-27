@@ -27,3 +27,4 @@ body:
       description: Which stacks does this apply to? What concrete rules should agents enforce?
     validations:
       required: true
+
