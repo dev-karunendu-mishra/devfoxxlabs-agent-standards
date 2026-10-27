@@ -1,17 +1,4 @@
-<#
-.SYNOPSIS
-    Installs DevFoxx Labs standards, rules, and skills across AI coding agents.
-.DESCRIPTION
-    Deploys global standards (DPDP Compliance, Security by Design, Database Safety, Hugeicons, Flutter Production)
-    and production skills to Claude Code, Gemini / Antigravity, Cursor, Windsurf, and Universal Agent runtimes.
-.EXAMPLE
-    .\install.ps1 -All
-.EXAMPLE
-    .\install.ps1 -Claude -Gemini
-.EXAMPLE
-    .\install.ps1 -TargetProject "E:\DevFoxxLabsProjects\my-project"
-#>
-
+# DevFoxx Labs - AI Agent Standards and Skills Installer
 [CmdletBinding()]
 param(
     [switch]$All,
@@ -29,23 +16,23 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $UserHome = $HOME
 
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host "   DevFoxx Labs — AI Agent Standards & Skills Installer   " -ForegroundColor Yellow
+Write-Host "   DevFoxx Labs - AI Agent Standards and Skills Installer " -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host "Repository source: $ScriptDir" -ForegroundColor Gray
-Write-Host "User home:         $UserHome`n" -ForegroundColor Gray
+Write-Host "User home:         $UserHome" -ForegroundColor Gray
+Write-Host ""
 
-# If no parameters specified, ask interactively
 if (-not ($All -or $Claude -or $Gemini -or $Cursor -or $Windsurf -or $Agents -or $TargetProject)) {
     Write-Host "Select installation target:" -ForegroundColor White
-    Write-Host "  [1] All supported agents (Claude, Gemini/Antigravity, Cursor, Windsurf, Universal Agents)"
+    Write-Host "  [1] All supported agents (Claude, Gemini, Cursor, Windsurf, Universal Agents)"
     Write-Host "  [2] Claude Code only (~/.claude)"
-    Write-Host "  [3] Google Antigravity & Gemini CLI only (~/.gemini)"
+    Write-Host "  [3] Google Antigravity and Gemini CLI only (~/.gemini)"
     Write-Host "  [4] Cursor only (~/.cursor)"
     Write-Host "  [5] Windsurf only (~/.codeium/windsurf)"
     Write-Host "  [6] Universal Agents standard only (~/.agents)"
     Write-Host "  [7] Specific Project repository"
     Write-Host "  [Q] Quit"
-    $choice = Read-Host "`nEnter selection (1-7 or Q)"
+    $choice = Read-Host "Enter selection (1-7 or Q)"
 
     switch ($choice) {
         "1" { $All = $true }
@@ -112,7 +99,7 @@ if ($Claude) {
 
 # 2. Gemini / Antigravity
 if ($Gemini) {
-    Write-Host "`n--> Installing for Google Antigravity & Gemini CLI..." -ForegroundColor Cyan
+    Write-Host "`n--> Installing for Google Antigravity and Gemini CLI..." -ForegroundColor Cyan
     $geminiDir = Join-Path $UserHome ".gemini"
     $geminiSkills = Join-Path $geminiDir "skills"
     Copy-SkillsToDir -TargetDir $geminiSkills
@@ -192,5 +179,5 @@ if ($TargetProject) {
 }
 
 Write-Host "`n==========================================================" -ForegroundColor Green
-Write-Host "   Installation Complete! All standards are active.      " -ForegroundColor Green
+Write-Host "   Installation Complete! All standards are active.       " -ForegroundColor Green
 Write-Host "==========================================================" -ForegroundColor Green
