@@ -1,19 +1,51 @@
+<div align="center">
+
 # 🛡️ DevFoxx Labs — AI Agent Standards & Skills Ecosystem
 
-> **Author**: Karunendu Mishra (DevFoxx Labs)  
-> **Version**: 1.0.0  
-> **Supported Agents**: Claude Code, Google Antigravity, Gemini CLI, Cursor, Windsurf, Cline, Codex, Amp, Aider, and Universal Agents (`~/.agents`).
+**Production-grade engineering standards, DPDP Act 2023 compliance, OWASP ASVS L2/L3 security baselines, and 11 pro skills for AI coding agents.**
 
-A unified, production-tested repository containing global engineering standards, compliance frameworks, security baselines, and specialized skills for autonomous and pair-programming AI coding agents.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-1.0.0-emerald.svg)](https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Agents](https://img.shields.io/badge/Agents-Claude%20%7C%20Gemini%20%7C%20Cursor%20%7C%20Windsurf-orange.svg)](#supported-agents)
 
 ---
 
-## 🌟 Why This Repository Exists
+[Quick Start](#-quick-start) • [Why This Exists](#-why-this-exists) • [Core Standards](#-the-5-core-engineering-standards) • [Skills Suite](#-the-production-skills-suite) • [Installation](#-universal-installation) • [Contributing](#-contributing)
 
-AI coding agents write the best code when they operate under strict, proven constraints rather than guessing architectural boundaries. This repository consolidates all production standards and rules authored at **DevFoxx Labs** into a single source of truth that can be:
-1. **Installed globally** into local agent configurations (`~/.claude`, `~/.gemini`, `~/.cursor`, `~/.codeium/windsurf`, `~/.agents`).
-2. **Mounted into individual projects** (`.agents/rules/`, `CLAUDE.md`, `.cursorrules`).
-3. **Shared with teams and other developers** so that any agent working on any codebase immediately adheres to the exact same security, legal, database, and architectural standards.
+</div>
+
+---
+
+## ⚡ Quick Start
+
+Clone and install all standards & skills across **Claude Code, Gemini CLI / Antigravity, Cursor, and Windsurf** in under 30 seconds:
+
+### Windows (PowerShell)
+```powershell
+git clone https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards.git
+cd devfoxxlabs-agent-standards
+.\install.ps1 -All
+```
+
+### macOS & Linux (Bash)
+```bash
+git clone https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards.git
+cd devfoxxlabs-agent-standards
+chmod +x install.sh
+./install.sh all
+```
+
+---
+
+## 🌟 Why This Exists
+
+AI coding agents (Claude Code, Gemini, Cursor, Windsurf) build features rapidly, but without strict architectural boundaries, they consistently make three critical mistakes:
+1. **Legal & Privacy Blindness**: Inlining tracking pixels and analytics SDKs before obtaining consent, directly violating **India's Digital Personal Data Protection Act, 2023 (DPDP Act)** and **DPDP Rules, 2025**.
+2. **Security Vulnerabilities**: Trusting client-side amounts/prices, skipping server-side object ownership checks, and hardcoding secrets.
+3. **Database Disasters**: Running destructive schema operations in production (`migrate:fresh`, unsafe `DROP`), omitting `WHERE` clauses, or skipping row-level locks on financial balances.
+
+**DevFoxx Labs Agent Standards** establishes deterministic, non-negotiable rules and a suite of 11 production skills that keep AI assistants strictly aligned with real-world enterprise engineering practices.
 
 ---
 
@@ -23,88 +55,84 @@ All agents governed by these standards adhere to five non-negotiable rules:
 
 | # | Standard | Summary | Scope |
 |---|---|---|---|
-| 1 | **[India DPDP Compliance First](rules/dpdp-compliance.md)** | Full compliance with the **Digital Personal Data Protection Act, 2023** and **DPDP Rules, 2025**. Notices (Privacy, Terms, Refund, Cookie), unbundled consent, append-only `consent_records` ledger, immediate withdrawal, zero tracker execution before consent, Data Principal rights, and Grievance Officer workflows. Built **first**, before any other feature. | Every web app, mobile app, and backend built for Indian users |
-| 2 | **[Security by Design](rules/secure-development.md)** | Four-layer defence: *Prevent → Enforce Automatically → Detect → Recover*. 2-min threat model before every feature. Server-side authorization and ownership check on every request. Server-computed money (never trust client amounts). Strict rate limits on write routes. Zero secrets in repos. Negative tests for abuse cases. Based on OWASP ASVS 5.0 (L2/L3), OWASP Top 10, MASVS, and CWE Top 25. | Every app, stack, and API |
-| 3 | **[Database Safety & ACID](rules/database-safety.md)** | Know where you are (local / staging / production) before every command. Production is guarded (`DB::prohibitDestructiveCommands`). Schema changes are additive (expand → migrate → contract) and backward-compatible. Every write is ACID with row locks (`lockForUpdate`) on shared balance/slots. Zero unmasked PII copied across environments. | MySQL, PostgreSQL, SQLite, Redis, Laravel, Prisma, Drift |
+| 1 | **[India DPDP Compliance First](rules/dpdp-compliance.md)** | Mandatory compliance under **DPDP Act, 2023** & **DPDP Rules, 2025**. Single-source versioned notices, unbundled consent, append-only `consent_records` ledger, zero tracker execution before consent, immediate withdrawal, and Grievance Officer routing. Built **first**, before any other feature. | All apps & APIs built for Indian users |
+| 2 | **[Security by Design](rules/secure-development.md)** | 4-Layer Defence (*Prevent → Enforce Automatically → Detect → Recover*). 2-min threat model before every feature. Server-side authorization & ownership checks on every request. Server-computed money. Rate limits on public writes. Zero secrets in repos. Negative tests for abuse cases. (OWASP ASVS L2/L3, OWASP Top 10, MASVS, CWE Top 25). | Every app, stack, and API |
+| 3 | **[Database Safety & ACID](rules/database-safety.md)** | Know where you are (local / staging / production) before every command. Production is guarded (`DB::prohibitDestructiveCommands`). Schema changes are additive (expand → migrate → contract). Every write is ACID with row locks (`lockForUpdate`) on shared balance/slots. Zero unmasked PII copied across environments. | MySQL, PostgreSQL, SQLite, Redis, Laravel, Prisma, Drift |
 | 4 | **[Hugeicons (Free) Everywhere](rules/icons-hugeicons.md)** | Frontends strictly use **Hugeicons Free (Stroke Rounded)**: `@hugeicons/react` on Web and `hugeicons` on Flutter. No mixing icon libraries (no Lucide, Heroicons, Material Icons, or ad-hoc SVGs). Accessible labels mandatory on icon buttons. | Web & Flutter frontends |
 | 5 | **[Flutter Screen Protection](rules/flutter-screen-protection.md)** | Mandatory `SafeArea` wrapping on bodies, bottom navigation bars, and persistent action buttons. Dynamic overflow resilience (`Expanded`/`Flexible`, `maxLines`, `ellipsis`, scrollable scaffolds, 320px width support). Mandatory dynamic backend data (`/api/v1/`), auto-skeleton loading, and memory-bounded image caching. | All Flutter mobile apps |
 
 ---
 
-## 🧰 The Production Skills Suite (`skills/`)
+## 🧰 The Production Skills Suite
 
-The repository includes 11 production-grade agent skills ready for instant invocation:
+This repository bundles 11 fully self-contained, battle-tested agent skills:
 
-### 1. Foundation & Compliance
-- **`skills/dpdp-compliance`**: Full workflow for establishing DPDP legal notices, consent tables, cookie preference banners, withdrawal mechanisms, and grievance dispatch.
-- **`skills/secure-development`**: 320-line threat-modeling and security hardening standard based on ASVS L2/L3 and OWASP Top 10.
-- **`skills/database-safety`**: Comprehensive database operations guide, safe migration patterns, expand-migrate-contract workflows, and ACID locking examples.
-- **`skills/flutter-production`**: The complete production standard extracted from the DevFoxx Labs portfolio. Includes templates for Riverpod 2.6+ state, API clients, local cache, biometrics, auto-skeleton loaders, sheet insets, and layout matrix test helpers.
+### 1. Compliance, Security & Architecture
+* **[`skills/dpdp-compliance`](skills/dpdp-compliance/SKILL.md)**: Establishes DPDP legal notices, consent capture, timestamped consent ledgers, cookie preference banners, withdrawal mechanisms, and grievance dispatch.
+* **[`skills/secure-development`](skills/secure-development/SKILL.md)**: 320-line threat-modeling and security hardening standard based on ASVS L2/L3 and OWASP Top 10.
+* **[`skills/database-safety`](skills/database-safety/SKILL.md)**: Comprehensive database operations guide, safe migration patterns, expand-migrate-contract workflows, and ACID locking examples.
+* **[`skills/flutter-production`](skills/flutter-production/SKILL.md)**: Complete production standard extracted from the DevFoxx Labs portfolio. Includes templates for Riverpod 2.6+ state, API clients, local cache, biometrics, auto-skeleton loaders, sheet insets, and layout matrix test helpers (37 files).
 
 ### 2. Design Intelligence & UI/UX
-- **`skills/ui-ux-pro-max`**: Design intelligence engine for web, mobile, and desktop. Includes searchable datasets for 79 design styles, 192 product palettes, 74 font pairings, 119 UX guidelines, 105 icons, and 22 technology stacks with bundled Python search tools.
-- **`skills/ui-styling`**: Rapid UI creation with shadcn/ui components (Radix UI + Tailwind), custom themes, and canvas layout systems.
-- **`skills/design`**: Multi-format brand identity system: logos, corporate identity programs (CIP), banners, icons, and social media image generation.
-- **`skills/design-system`**: Three-layer design tokens (primitive → semantic → component), CSS variables, and token validation scripts.
-- **`skills/brand`**: Brand identity frameworks, tone of voice, asset management, and color extraction utilities.
-- **`skills/banner-design`**: Multi-format creative banner generator for social media, ads, website heroes, and print.
-- **`skills/slides`**: Strategic HTML presentation and slide deck builder with Chart.js visualization.
+* **[`skills/ui-ux-pro-max`](skills/ui-ux-pro-max/SKILL.md)**: Design intelligence engine for web, mobile, and desktop. Includes searchable datasets for 79 design styles, 192 product palettes, 74 font pairings, 119 UX guidelines, 105 icons, and 22 technology stacks with bundled Python search tools (68 files).
+* **[`skills/ui-styling`](skills/ui-styling/SKILL.md)**: Rapid UI creation with shadcn/ui components (Radix UI + Tailwind), custom themes, and canvas layout systems (16 files).
+* **[`skills/design`](skills/design/SKILL.md)**: Multi-format brand identity system: logos, corporate identity programs (CIP), banners, icons, and social media image generation (35 files).
+* **[`skills/design-system`](skills/design-system/SKILL.md)**: Three-layer design tokens (primitive → semantic → component), CSS variables, and token validation scripts (27 files).
+* **[`skills/brand`](skills/brand/SKILL.md)**: Brand identity frameworks, tone of voice, asset management, and color extraction utilities (18 files).
+* **[`skills/banner-design`](skills/banner-design/SKILL.md)**: Multi-format creative banner generator for social media, ads, website heroes, and print.
+* **[`skills/slides`](skills/slides/SKILL.md)**: Strategic HTML presentation and slide deck builder with Chart.js visualization.
 
 ---
 
-## 🚀 Installation & Quick Start
+## 💻 Universal Installation
 
-### Windows (PowerShell)
-
-Run `install.ps1` to install across all or specific agents:
+### Agent-Specific Installs (Windows PowerShell)
 
 ```powershell
-# 1. Install across ALL agents (Claude, Gemini, Cursor, Windsurf, ~/.agents)
-.\install.ps1 -All
+# Install to Claude Code only (~/.claude)
+.\install.ps1 -Claude
 
-# 2. Or install to specific agents
-.\install.ps1 -Claude -Gemini
+# Install to Google Antigravity & Gemini CLI only (~/.gemini)
+.\install.ps1 -Gemini
+
+# Install to Cursor only (~/.cursor)
 .\install.ps1 -Cursor
+
+# Install to Windsurf only (~/.codeium/windsurf)
 .\install.ps1 -Windsurf
 
-# 3. Or deploy rules into a specific project repository
-.\install.ps1 -TargetProject "E:\DevFoxxLabsProjects\my-project"
+# Inject rules directly into a specific project codebase
+.\install.ps1 -TargetProject "E:\DevFoxxLabsProjects\your-project"
 ```
 
-Running `.\install.ps1` with no flags launches an interactive menu.
-
----
-
-### macOS & Linux (Bash)
+### Agent-Specific Installs (macOS / Linux)
 
 ```bash
-# Make executable
-chmod +x install.sh
-
-# Install across ALL agents
-./install.sh all
-
-# Or install to specific agent
-./install.sh claude
-./install.sh gemini
-./install.sh cursor
-./install.sh windsurf
-
-# Or deploy to a project
-./install.sh /path/to/my-project
+./install.sh claude      # ~/.claude
+./install.sh gemini      # ~/.gemini
+./install.sh cursor      # ~/.cursor
+./install.sh windsurf    # ~/.codeium/windsurf
+./install.sh /path/to/project
 ```
 
 ---
 
-## 📂 Repository Directory Layout
+## 📂 Repository Layout
 
 ```
-devfoxx-agent-standards/
+devfoxxlabs-agent-standards/
 ├── README.md                           # Documentation & master overview
 ├── manifest.json                       # Machine-readable registry of standards & skills
 ├── install.ps1                         # PowerShell universal installer (Windows)
 ├── install.sh                          # Bash universal installer (macOS/Linux)
 ├── sync.ps1                            # Bi-directional sync tool (repo <-> local agents)
+├── LICENSE                             # MIT Open Source License
+├── CONTRIBUTING.md                     # Contribution guidelines
+│
+├── .github/                            # Issue templates & community health
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── new-standard.yml            # New rule/skill proposal template
+│   │   └── bug-report.yml              # Bug report template
 │
 ├── rules/                              # Global & platform-specific rules
 │   ├── dpdp-compliance.md              # DPDP Act 2023 / Rules 2025 rule
@@ -141,10 +169,10 @@ devfoxx-agent-standards/
 
 ## 🔄 Keeping Standards in Sync
 
-When you modify skills or rules locally and want to pull them back into this repository, run:
+When you modify skills or rules locally and want to pull them back into this repository, or push updates across all machines:
 
 ```powershell
-# Pull latest changes from ~/.gemini into this repo
+# Pull latest modifications from ~/.gemini into this repo
 .\sync.ps1 -Action Pull
 
 # Push latest repo updates back to all local agents
@@ -153,8 +181,13 @@ When you modify skills or rules locally and want to pull them back into this rep
 
 ---
 
+## 🤝 Contributing
+
+We welcome contributions from developers, security professionals, and compliance advisors! Please read our **[Contributing Guidelines](CONTRIBUTING.md)** before submitting a pull request.
+
+---
+
 ## 📄 License & Attribution
 
 Authored and maintained by **Karunendu Mishra** ([DevFoxx Labs](https://github.com/dev-karunendu-mishra)).  
-Shared internally and across projects to maintain consistent engineering excellence across all AI pair programming workflows.
-
+Released under the [MIT License](LICENSE).

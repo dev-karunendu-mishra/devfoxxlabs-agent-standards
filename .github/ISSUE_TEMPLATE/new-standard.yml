@@ -1,0 +1,29 @@
+name: 🚀 Propose New Standard or Skill
+description: Suggest a new engineering standard, legal rule, or agent skill.
+title: "[Proposal]: "
+labels: ["enhancement", "proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for proposing a new standard or skill to make AI coding agents better!
+  - type: input
+    id: standard-name
+    attributes:
+      label: Standard / Skill Name
+      description: Name of the proposed standard or skill (e.g. `webauthn-security` or `nextjs-seo-standard`).
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem or mistake does this prevent AI agents from making?
+      description: Explain the common bug, security gap, or hallucination this rule stops.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Proposed Checklist & Scope
+      description: Which stacks does this apply to? What concrete rules should agents enforce?
+    validations:
+      required: true

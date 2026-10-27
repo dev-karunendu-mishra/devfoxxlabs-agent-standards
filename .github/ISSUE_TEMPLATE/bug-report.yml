@@ -1,0 +1,29 @@
+name: 🐛 Bug Report
+description: Report an issue in an existing rule, skill, or installer script.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping improve the standards!
+  - type: input
+    id: component
+    attributes:
+      label: Affected Component
+      description: e.g. `install.ps1`, `install.sh`, `rules/database-safety.md`, `skills/flutter-production`
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: What went wrong or what did an agent misinterpret?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS (Windows/Mac/Linux), Agent (Claude Code / Gemini / Cursor / Windsurf), Shell version.
+    validations:
+      required: false

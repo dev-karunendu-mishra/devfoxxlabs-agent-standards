@@ -1,10 +1,12 @@
 {
-  "name": "devfoxx-agent-standards",
+  "name": "devfoxxlabs-agent-standards",
   "version": "1.0.0",
-  "description": "Production-grade engineering standards, security baselines, DPDP compliance frameworks, and AI agent skills authored by DevFoxx Labs (Karunendu).",
+  "description": "Production-grade engineering standards, security baselines, DPDP compliance frameworks, and AI agent skills authored by DevFoxx Labs (Karunendu Mishra).",
+  "repository": "https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards",
   "author": {
-    "name": "Karunendu",
-    "organization": "DevFoxx Labs"
+    "name": "Karunendu Mishra",
+    "organization": "DevFoxx Labs",
+    "github": "https://github.com/dev-karunendu-mishra"
   },
   "standards": [
     {
@@ -63,4 +65,3 @@
     "Universal Agents (~/.agents)"
   ]
 }
-
