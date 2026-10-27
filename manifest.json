@@ -1,0 +1,65 @@
+{
+  "name": "devfoxx-agent-standards",
+  "version": "1.0.0",
+  "description": "Production-grade engineering standards, security baselines, DPDP compliance frameworks, and AI agent skills authored by DevFoxx Labs (Karunendu).",
+  "author": {
+    "name": "Karunendu",
+    "organization": "DevFoxx Labs"
+  },
+  "standards": [
+    {
+      "id": "dpdp-compliance",
+      "name": "India DPDP Compliance First",
+      "ruleFile": "rules/dpdp-compliance.md",
+      "skillPath": "skills/dpdp-compliance",
+      "description": "Digital Personal Data Protection Act, 2023 & DPDP Rules 2025 compliance foundation for Web, Mobile, and Backends."
+    },
+    {
+      "id": "secure-development",
+      "name": "Security by Design",
+      "ruleFile": "rules/secure-development.md",
+      "skillPath": "skills/secure-development",
+      "description": "Four-layer defence model based on OWASP ASVS 5.0 L2/L3, OWASP Top 10, API Security Top 10, MASVS, and CWE Top 25."
+    },
+    {
+      "id": "database-safety",
+      "name": "Database Safety & ACID",
+      "ruleFile": "rules/database-safety.md",
+      "skillPath": "skills/database-safety",
+      "description": "Environment awareness, destructive command prevention, additive expand-migrate-contract schema changes, and ACID transactions."
+    },
+    {
+      "id": "icons-hugeicons",
+      "name": "Icons: Hugeicons (Free) Everywhere",
+      "ruleFile": "rules/icons-hugeicons.md",
+      "description": "Strict standard enforcing Hugeicons free stroke rounded icons across Web and Flutter apps."
+    },
+    {
+      "id": "flutter-screen-protection",
+      "name": "Flutter Screen Protection & Overflow Prevention",
+      "ruleFile": "rules/flutter-screen-protection.md",
+      "skillPath": "skills/flutter-production",
+      "description": "Mandatory Safe Area insets, RenderFlex overflow resilience, dynamic data rule, skeleton loading, and image caching."
+    }
+  ],
+  "skills": [
+    { "id": "dpdp-compliance", "category": "compliance", "author": "karunendu", "version": "1.0.0" },
+    { "id": "secure-development", "category": "security", "author": "karunendu", "version": "1.0.0" },
+    { "id": "database-safety", "category": "database", "author": "karunendu", "version": "1.0.0" },
+    { "id": "flutter-production", "category": "mobile", "author": "karunendu", "version": "1.0.0" },
+    { "id": "ui-ux-pro-max", "category": "design", "author": "claudekit", "version": "1.0.0" },
+    { "id": "ui-styling", "category": "design", "author": "claudekit", "version": "1.0.0" },
+    { "id": "design", "category": "design", "author": "claudekit", "version": "2.1.0" },
+    { "id": "design-system", "category": "design", "author": "claudekit", "version": "1.0.0" },
+    { "id": "brand", "category": "design", "author": "claudekit", "version": "1.0.0" },
+    { "id": "banner-design", "category": "design", "author": "claudekit", "version": "1.0.0" },
+    { "id": "slides", "category": "design", "author": "claudekit", "version": "1.0.0" }
+  ],
+  "supportedAgents": [
+    "Claude Code",
+    "Google Antigravity / Gemini CLI",
+    "Cursor",
+    "Windsurf",
+    "Universal Agents (~/.agents)"
+  ]
+}

@@ -1,0 +1,48 @@
+# DevFoxx Labs standard lints: flutter_lints + strict mode + production rules.
+# Target: `flutter analyze` prints "No issues found!". An `// ignore:` needs a reason on the same line.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  errors:
+    use_build_context_synchronously: error
+    cancel_subscriptions: error
+    close_sinks: error
+    unawaited_futures: warning
+    avoid_print: error
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+
+linter:
+  rules:
+    - cancel_subscriptions
+    - close_sinks
+    - unawaited_futures
+    - use_build_context_synchronously
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - avoid_unnecessary_containers
+    - sized_box_for_whitespace
+    - use_colored_box
+    - use_decorated_box
+    - always_declare_return_types
+    - avoid_type_to_string
+    - prefer_final_fields
+    - prefer_final_locals
+    - prefer_final_in_for_each
+    - throw_in_finally
+    - unnecessary_lambdas
+    - use_super_parameters
+    - use_key_in_widget_constructors
+    - sort_child_properties_last
+    - directives_ordering
+    - prefer_single_quotes
+    - avoid_print
