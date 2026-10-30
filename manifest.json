@@ -65,6 +65,14 @@
     { "id": "banner-design", "category": "design", "author": "claudekit", "version": "1.0.0" },
     { "id": "slides", "category": "design", "author": "claudekit", "version": "1.0.0" }
   ],
+  "thirdParty": [
+    { "id": "clerk-skills", "source": "github.com/clerk/skills", "install": "npx -y skills add clerk/skills -g -s '*' -a codex -y" },
+    { "id": "find-skills", "source": "github.com/vercel-labs/skills", "install": "npx -y skills add vercel-labs/skills -g -s find-skills -a codex -y" },
+    { "id": "rea", "source": "npm:rea-agents@6.7.0", "install": "npx -y rea-agents@6.7.0 setup --client claude_code --yes" }
+  ],
+  "overrides": {
+    "claude": ["skills/ui-ux-pro-max/SKILL.md"]
+  },
   "supportedAgents": [
     "Claude Code",
     "Google Antigravity / Gemini CLI",

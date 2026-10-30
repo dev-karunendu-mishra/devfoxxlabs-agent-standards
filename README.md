@@ -38,6 +38,55 @@ chmod +x install.sh
 
 ---
 
+## 🖥️ New Machine Setup (same setup on every PC)
+
+To get the exact same agent setup on a new PC — same global rules, same skills, same third-party
+skills and MCP servers:
+
+**1. Prerequisites:** Git, **Node.js LTS** (for `npx` and the `.cjs` skill scripts) and **Python 3**
+(for the `ui-ux-pro-max` / `design` search and generator scripts). Install the agents you use first
+(Claude Code, Gemini CLI / Antigravity, Cursor, Windsurf, Codex, …) so their folders exist.
+
+**2. Install everything:**
+
+```powershell
+# Windows
+git clone https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards.git
+cd devfoxxlabs-agent-standards
+.\install.ps1 -All -ThirdParty
+```
+
+```bash
+# macOS / Linux
+git clone https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards.git
+cd devfoxxlabs-agent-standards && ./install.sh new-machine
+```
+
+| What gets installed | Where |
+|---|---|
+| Global rules | `~/.claude/CLAUDE.md`, `~/.gemini/GEMINI.md`, `~/.codex/AGENTS.md`, Windsurf `global_rules.md`, `~/.agents/rules/` |
+| 12 skills (each agent gets its own script paths; Claude gets its own `ui-ux-pro-max` from `overrides/claude/`) | `~/.claude`, `~/.gemini`, `~/.cursor`, `~/.codeium/windsurf`, `~/.agents` + every other agent folder found |
+| Clerk skills + `find-skills` (from their publishers via `npx skills`) | `~/.agents/skills` (Codex, Copilot, …) and AiderDesk if present |
+| REA MCP server + `reverse-engineer-anything` skill (`rea-agents setup`) | Claude Code (`~/.claude.json`, `~/.claude/skills`) |
+
+**3. One-time manual steps** (they can't be scripted):
+
+- **Cursor:** Cursor keeps global rules in its settings, not in a file. The installer copies them to
+  the clipboard — open **Cursor → Settings → Rules → User Rules** and paste.
+- **Sign in** to Claude Code / Claude Desktop: Anthropic's own skills (pdf, docx, pptx, xlsx, …) and
+  plugins (productivity, design, engineering) come with your account.
+- **Restart** every agent so it loads the new rules and skills.
+
+> **Not copied on purpose:** `~/.claude/settings.json` and other machine-specific config (local
+> proxies, API base URLs, tokens). Copying them can break the agent on another PC — set those up
+> per machine.
+
+**Keeping PCs in sync:** after changing a rule or skill on one PC, run `.\sync.ps1 -Action Pull`,
+review `git diff`, commit and push. On the other PCs: `git pull` then `.\install.ps1 -All`.
+Update third-party skills anywhere with `npx skills update -g`.
+
+---
+
 ## 🌟 Why This Exists
 
 AI coding agents (Claude Code, Gemini, Cursor, Windsurf) build features rapidly, but without strict architectural boundaries, they consistently make three critical mistakes:
@@ -110,6 +159,9 @@ This repository bundles 12 fully self-contained, battle-tested agent skills:
 # (GitHub Copilot, Continue, Roo Code, Kilo Code, OpenCode, Augment, CodeBuddy, Factory, Qoder, Trae, Warp)
 .\install.ps1 -OtherAgents
 
+# Third-party skills + MCP servers (Clerk skills, find-skills, REA) - needs Node.js
+.\install.ps1 -ThirdParty
+
 # Install only selected skills
 .\install.ps1 -Claude -SkillList dpdp-compliance,secure-development
 
@@ -127,6 +179,8 @@ This repository bundles 12 fully self-contained, battle-tested agent skills:
 ./install.sh codex       # ~/.codex/AGENTS.md + ~/.agents/skills
 ./install.sh agents      # ~/.agents (all rules + skills)
 ./install.sh others      # skills for every other installed agent
+./install.sh thirdparty  # Clerk skills, find-skills, REA MCP server
+./install.sh new-machine # all + thirdparty
 ./install.sh /path/to/project
 ```
 
@@ -163,6 +217,9 @@ devfoxxlabs-agent-standards/
 │   ├── GEMINI_GLOBAL.md                # Global prompt for ~/.gemini/GEMINI.md
 │   ├── WINDSURF_GLOBAL.md              # Global prompt for Windsurf memories
 │   └── CURSOR_GLOBAL.md                # Global rules for Cursor / Codex AGENTS.md / .cursorrules
+│
+├── overrides/                          # Agent-specific file variants applied on install
+│   └── claude/skills/ui-ux-pro-max/    # Claude Code's own ui-ux-pro-max SKILL.md
 │
 ├── skills/                             # The 12 agent skills
 │   ├── dpdp-compliance/                # DPDP compliance framework

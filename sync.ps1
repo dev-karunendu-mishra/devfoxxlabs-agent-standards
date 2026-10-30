@@ -38,15 +38,34 @@ $skillRoots = @{
     "Cursor" = "$UserHome\.cursor\skills"
 }
 $skillRoot = $skillRoots[$From]
+$agentKey = $From.ToLower()
+# Path rewrite done by install.ps1 for path-aware skills, undone here.
+$PathAwareSkills = @("ui-ux-pro-max")
+$RepoSkillPrefix = ".gemini/skills/"
+$agentPrefix = $skillRoot.Substring($UserHome.Length).TrimStart("\", "/").Replace("\", "/") + "/"
+$Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 Write-Host "Pulling skills from $skillRoot into repository..." -ForegroundColor Cyan
 $skills = Get-ChildItem -Path "$ScriptDir\skills" -Directory
 foreach ($s in $skills) {
     $source = Join-Path $skillRoot $s.Name
-    if (Test-Path $source) {
-        Copy-Item -Path $source -Destination "$ScriptDir\skills" -Recurse -Force
-        Write-Host "  [<] Pulled skill: $($s.Name)" -ForegroundColor Green
+    if (-not (Test-Path $source)) { continue }
+
+    # File by file: files that have an agent-specific override go back to overrides\<agent>.
+    Get-ChildItem -Path $source -Recurse -File | Where-Object { $_.FullName -notmatch "\\__pycache__\\" } | ForEach-Object {
+        $relative = $_.FullName.Substring($source.Length).TrimStart("\")
+        $override = Join-Path $ScriptDir "overrides\$agentKey\skills\$($s.Name)\$relative"
+        $dest = if (Test-Path $override) { $override } else { Join-Path $s.FullName $relative }
+        $destDir = Split-Path -Parent $dest
+        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
+        Copy-Item -Path $_.FullName -Destination $dest -Force
+
+        if (($dest -eq (Join-Path $s.FullName "SKILL.md")) -and ($PathAwareSkills -contains $s.Name)) {
+            $text = [IO.File]::ReadAllText($dest)
+            [IO.File]::WriteAllText($dest, $text.Replace($agentPrefix, $RepoSkillPrefix), $Utf8NoBom)
+        }
     }
+    Write-Host "  [<] Pulled skill: $($s.Name)" -ForegroundColor Green
 }
 
 Write-Host "Pulling global rules into repository..." -ForegroundColor Cyan
