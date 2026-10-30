@@ -1,6 +1,6 @@
 {
   "name": "devfoxxlabs-agent-standards",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Production-grade engineering standards, security baselines, DPDP compliance frameworks, and AI agent skills authored by DevFoxx Labs (Karunendu Mishra).",
   "repository": "https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards",
   "author": {
@@ -42,6 +42,13 @@
       "ruleFile": "rules/flutter-screen-protection.md",
       "skillPath": "skills/flutter-production",
       "description": "Mandatory Safe Area insets, RenderFlex overflow resilience, dynamic data rule, skeleton loading, and image caching."
+    },
+    {
+      "id": "engineering-workflow",
+      "name": "Engineering Workflow",
+      "ruleFile": "rules/engineering-workflow.md",
+      "skillPath": "skills/engineering-workflow",
+      "description": "Read before, record after, verify before done: change log, known gaps, owner TODO, use what's installed, S.O.L.I.D, fail-closed feature flags."
     }
   ],
   "skills": [
@@ -49,6 +56,7 @@
     { "id": "secure-development", "category": "security", "author": "karunendu", "version": "1.0.0" },
     { "id": "database-safety", "category": "database", "author": "karunendu", "version": "1.0.0" },
     { "id": "flutter-production", "category": "mobile", "author": "karunendu", "version": "1.0.0" },
+    { "id": "engineering-workflow", "category": "workflow", "author": "karunendu", "version": "1.0.0" },
     { "id": "ui-ux-pro-max", "category": "design", "author": "claudekit", "version": "1.0.0" },
     { "id": "ui-styling", "category": "design", "author": "claudekit", "version": "1.0.0" },
     { "id": "design", "category": "design", "author": "claudekit", "version": "2.1.0" },
@@ -62,6 +70,18 @@
     "Google Antigravity / Gemini CLI",
     "Cursor",
     "Windsurf",
-    "Universal Agents (~/.agents)"
+    "OpenAI Codex",
+    "Universal Agents (~/.agents)",
+    "GitHub Copilot",
+    "Continue",
+    "Roo Code",
+    "Kilo Code",
+    "OpenCode",
+    "Augment",
+    "CodeBuddy",
+    "Factory",
+    "Qoder",
+    "Trae",
+    "Warp"
   ]
 }

@@ -224,3 +224,23 @@ data fixes, imports, writes, transactions, backups. Full standard: the **`databa
 - Tests: throwaway DB only; migrations tested on existing rows and on the real engine for schema changes;
   rollback-on-failure and idempotency tests for money paths.
 - Write this rule (or a pointer to it) into each project's own rules file when setting a project up.
+
+# Global Rule — Engineering Workflow: read before, record after, verify before done
+
+Applies to every project and stack. Full standard + doc templates: the **`engineering-workflow`** skill.
+
+- **Read first:** the project's rules file, the `changes/CHANGELOG.md` entries for the area, and
+  `docs/known-gaps.md`. **Use what's already installed** and the existing pattern; a new package
+  only with a stated reason and my OK.
+- **Build:** S.O.L.I.D; each business rule in **one** service used by web, API, mobile and admin;
+  fix web + mobile + API in the same change; reuse design-system components; all backend calls
+  through the typed API client; no placeholder buttons or mock data in shipped screens; no native
+  `confirm()`/`alert()`; long dialogs scroll only in the body.
+- **Feature flags fail closed:** on only if the flag exists and is `true` (never `?? true`); the
+  server refuses the endpoints when off; a feature that ships on creates its flag in a migration.
+- **Verify before "done":** run lint/analyze/type-check/tests and report command + result; no new
+  failures; see UI changes render (320 px, dark mode); say plainly what couldn't be verified.
+- **Record after:** a `changes/CHANGELOG.md` entry per task in the same change (never rewrite old
+  ones); fix known gaps you touch, log new ones with path/impact/fix/🔴🟠🟡; owner-only tasks go in
+  `docs/owner-todo.md` under a dated section and are never ticked off without my confirmation.
+- Write this rule (or a pointer to it) into each project's own rules file when setting a project up.

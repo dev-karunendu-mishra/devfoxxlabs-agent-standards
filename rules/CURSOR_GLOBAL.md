@@ -38,3 +38,13 @@ Know where you are, never break data, always ACID.
 - Every multi-row write runs in a database transaction (`lockForUpdate` on shared rows).
 - Never copy unmasked production PII to local/staging environments.
 
+
+## 5. Engineering Workflow
+Read before, record after, verify before done (full standard: `engineering-workflow` skill).
+- Read the project rules file, `changes/CHANGELOG.md` entries for the area and `docs/known-gaps.md` first.
+- Use what's already installed; no new package without a reason and the owner's OK.
+- S.O.L.I.D; one service per business rule shared by web, API and mobile; fix all sides in the same change.
+- No placeholder buttons/mock data, no native `confirm()`/`alert()`, API calls through the typed client.
+- Feature flags fail closed (missing = off, never `?? true`); the server enforces them.
+- Run lint/analyze/tests and report the result before claiming done.
+- Add a change-log entry per task; fix or log known gaps (🔴/🟠/🟡); owner-only tasks go in `docs/owner-todo.md`.

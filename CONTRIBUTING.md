@@ -9,7 +9,7 @@ Thank you for your interest in contributing! We welcome contributions from devel
 Every standard and skill added to this repository must satisfy:
 1. **Zero Hallucination / Defense in Depth**: Rules must enforce concrete programmatic safeguards (e.g., server validation, tests, ACID constraints) rather than vague advice.
 2. **Deterministic & Production-Tested**: Extracted from real-world, high-traffic production workloads.
-3. **Cross-Agent Portable**: Must work transparently across Claude Code, Google Antigravity / Gemini CLI, Cursor, Windsurf, and Universal Agents (`~/.agents`).
+3. **Cross-Agent Portable**: Must work transparently across Claude Code, Google Antigravity / Gemini CLI, Cursor, Windsurf, OpenAI Codex, Universal Agents (`~/.agents`) and other SKILL.md-compatible agents.
 
 ---
 
