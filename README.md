@@ -2,10 +2,10 @@
 
 # 🛡️ DevFoxx Labs — AI Agent Standards & Skills Ecosystem
 
-**Production-grade engineering standards, DPDP Act 2023 compliance, OWASP ASVS L2/L3 security baselines, and 12 pro skills for AI coding agents.**
+**Production-grade engineering standards, DPDP Act 2023 compliance, OWASP ASVS L2/L3 security baselines, and 13 pro skills for AI coding agents.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/Version-1.1.0-emerald.svg)](https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards)
+[![Version](https://img.shields.io/badge/Version-1.2.0-emerald.svg)](https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Agents](https://img.shields.io/badge/Agents-Claude%20%7C%20Gemini%20%7C%20Cursor%20%7C%20Windsurf%20%7C%20Codex%20%7C%20Copilot-orange.svg)](#supported-agents)
 
@@ -65,7 +65,7 @@ cd devfoxxlabs-agent-standards && ./install.sh new-machine
 | What gets installed | Where |
 |---|---|
 | Global rules | `~/.claude/CLAUDE.md`, `~/.gemini/GEMINI.md`, `~/.codex/AGENTS.md`, Windsurf `global_rules.md`, `~/.agents/rules/` |
-| 12 skills (each agent gets its own script paths; Claude gets its own `ui-ux-pro-max` from `overrides/claude/`) | `~/.claude`, `~/.gemini`, `~/.cursor`, `~/.codeium/windsurf`, `~/.agents` + every other agent folder found |
+| 13 skills (each agent gets its own script paths; Claude gets its own `ui-ux-pro-max` from `overrides/claude/`) | `~/.claude`, `~/.gemini`, `~/.cursor`, `~/.codeium/windsurf`, `~/.agents` + every other agent folder found |
 | Clerk skills + `find-skills` (from their publishers via `npx skills`) | `~/.agents/skills` (Codex, Copilot, …) and AiderDesk if present |
 | REA MCP server + `reverse-engineer-anything` skill (`rea-agents setup`) | Claude Code (`~/.claude.json`, `~/.claude/skills`) |
 
@@ -94,13 +94,13 @@ AI coding agents (Claude Code, Gemini, Cursor, Windsurf) build features rapidly,
 2. **Security Vulnerabilities**: Trusting client-side amounts/prices, skipping server-side object ownership checks, and hardcoding secrets.
 3. **Database Disasters**: Running destructive schema operations in production (`migrate:fresh`, unsafe `DROP`), omitting `WHERE` clauses, or skipping row-level locks on financial balances.
 
-**DevFoxx Labs Agent Standards** establishes deterministic, non-negotiable rules and a suite of 12 production skills that keep AI assistants strictly aligned with real-world enterprise engineering practices.
+**DevFoxx Labs Agent Standards** establishes deterministic, non-negotiable rules and a suite of 13 production skills that keep AI assistants strictly aligned with real-world enterprise engineering practices.
 
 ---
 
-## 🏛️ The 6 Core Engineering Standards
+## 🏛️ The 7 Core Engineering Standards
 
-All agents governed by these standards adhere to six non-negotiable rules:
+All agents governed by these standards adhere to seven non-negotiable rules:
 
 | # | Standard | Summary | Scope |
 |---|---|---|---|
@@ -110,12 +110,13 @@ All agents governed by these standards adhere to six non-negotiable rules:
 | 4 | **[Hugeicons (Free) Everywhere](rules/icons-hugeicons.md)** | Frontends strictly use **Hugeicons Free (Stroke Rounded)**: `@hugeicons/react` on Web and `hugeicons` on Flutter. No mixing icon libraries (no Lucide, Heroicons, Material Icons, or ad-hoc SVGs). Accessible labels mandatory on icon buttons. | Web & Flutter frontends |
 | 5 | **[Flutter Screen Protection](rules/flutter-screen-protection.md)** | Mandatory `SafeArea` wrapping on bodies, bottom navigation bars, and persistent action buttons. Dynamic overflow resilience (`Expanded`/`Flexible`, `maxLines`, `ellipsis`, scrollable scaffolds, 320px width support). Mandatory dynamic backend data (`/api/v1/`), auto-skeleton loading, and memory-bounded image caching. | All Flutter mobile apps |
 | 6 | **[Engineering Workflow](rules/engineering-workflow.md)** | *Read before, record after, verify before done.* Read the change log and known gaps first; use what is already installed; S.O.L.I.D with one shared service per business rule; fix web + mobile + API together; no placeholder actions or native `confirm()`/`alert()`; fail-closed feature flags enforced by the server; run lint/tests before claiming done; record `changes/CHANGELOG.md`, `docs/known-gaps.md` and `docs/owner-todo.md`. | Every project & stack |
+| 7 | **[Web Performance: Core Web Vitals](rules/web-performance.md)** | LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1 at p75 on mobile. Server-rendered LCP element with a prioritised hero image, no interaction task > 50 ms, every media element sized, initial JS ≤ 170 KB per route, third parties only after consent and deferred. Lighthouse CI gate + `web-vitals` RUM without personal data. | Every website, web app & admin panel |
 
 ---
 
 ## 🧰 The Production Skills Suite
 
-This repository bundles 12 fully self-contained, battle-tested agent skills:
+This repository bundles 13 fully self-contained, battle-tested agent skills:
 
 ### 1. Compliance, Security & Architecture
 * **[`skills/dpdp-compliance`](skills/dpdp-compliance/SKILL.md)**: Establishes DPDP legal notices, consent capture, timestamped consent ledgers, cookie preference banners, withdrawal mechanisms, and grievance dispatch.
@@ -123,6 +124,7 @@ This repository bundles 12 fully self-contained, battle-tested agent skills:
 * **[`skills/database-safety`](skills/database-safety/SKILL.md)**: Comprehensive database operations guide, safe migration patterns, expand-migrate-contract workflows, and ACID locking examples.
 * **[`skills/flutter-production`](skills/flutter-production/SKILL.md)**: Complete production standard extracted from the DevFoxx Labs portfolio. Includes templates for Riverpod 2.6+ state, API clients, local cache, biometrics, auto-skeleton loaders, sheet insets, and layout matrix test helpers (37 files).
 * **[`skills/engineering-workflow`](skills/engineering-workflow/SKILL.md)**: Read → build → verify → record task workflow, fail-closed feature flags per stack, verification gates, and ready-to-copy `changes/CHANGELOG.md`, `docs/known-gaps.md` and `docs/owner-todo.md` templates.
+* **[`skills/web-performance`](skills/web-performance/SKILL.md)**: Core Web Vitals playbook (LCP, INP, CLS) per stack — Next.js, Laravel + Inertia/Vite, Blade, Flutter web — with a ready `lighthouserc.json` CI gate and a privacy-safe `web-vitals` RUM reporter.
 
 ### 2. Design Intelligence & UI/UX
 * **[`skills/ui-ux-pro-max`](skills/ui-ux-pro-max/SKILL.md)**: Design intelligence engine for web, mobile, and desktop. Includes searchable datasets for 79 design styles, 192 product palettes, 74 font pairings, 119 UX guidelines, 105 icons, and 22 technology stacks with bundled Python search tools (68 files).
@@ -213,6 +215,7 @@ devfoxxlabs-agent-standards/
 │   ├── icons-hugeicons.md              # Hugeicons standard rule
 │   ├── flutter-screen-protection.md    # Flutter screen protection & overflow rule
 │   ├── engineering-workflow.md         # Read before, record after, verify before done
+│   ├── web-performance.md              # Core Web Vitals (LCP / INP / CLS) standard
 │   ├── CLAUDE_GLOBAL.md                # Global prompt for ~/.claude/CLAUDE.md
 │   ├── GEMINI_GLOBAL.md                # Global prompt for ~/.gemini/GEMINI.md
 │   ├── WINDSURF_GLOBAL.md              # Global prompt for Windsurf memories
@@ -221,12 +224,13 @@ devfoxxlabs-agent-standards/
 ├── overrides/                          # Agent-specific file variants applied on install
 │   └── claude/skills/ui-ux-pro-max/    # Claude Code's own ui-ux-pro-max SKILL.md
 │
-├── skills/                             # The 12 agent skills
+├── skills/                             # The 13 agent skills
 │   ├── dpdp-compliance/                # DPDP compliance framework
 │   ├── secure-development/             # OWASP ASVS L2/L3 security standard
 │   ├── database-safety/                # Production database safety standard
 │   ├── flutter-production/             # Flutter architecture, templates & test helpers
 │   ├── engineering-workflow/           # Task workflow + changelog / known-gaps / owner-TODO templates
+│   ├── web-performance/                # Core Web Vitals playbook, Lighthouse CI + RUM templates
 │   ├── ui-ux-pro-max/                  # Design intelligence engine & datasets
 │   ├── ui-styling/                     # shadcn/ui & Tailwind customization
 │   ├── design/                         # Brand identity, CIP & visual design

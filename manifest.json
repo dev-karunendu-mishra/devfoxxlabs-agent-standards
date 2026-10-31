@@ -1,6 +1,6 @@
 {
   "name": "devfoxxlabs-agent-standards",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Production-grade engineering standards, security baselines, DPDP compliance frameworks, and AI agent skills authored by DevFoxx Labs (Karunendu Mishra).",
   "repository": "https://github.com/dev-karunendu-mishra/devfoxxlabs-agent-standards",
   "author": {
@@ -49,6 +49,13 @@
       "ruleFile": "rules/engineering-workflow.md",
       "skillPath": "skills/engineering-workflow",
       "description": "Read before, record after, verify before done: change log, known gaps, owner TODO, use what's installed, S.O.L.I.D, fail-closed feature flags."
+    },
+    {
+      "id": "web-performance",
+      "name": "Web Performance: Core Web Vitals",
+      "ruleFile": "rules/web-performance.md",
+      "skillPath": "skills/web-performance",
+      "description": "LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1 at p75 mobile: server-rendered LCP, JS budgets, sized media, deferred third parties, Lighthouse CI gate and web-vitals RUM."
     }
   ],
   "skills": [
@@ -57,6 +64,7 @@
     { "id": "database-safety", "category": "database", "author": "karunendu", "version": "1.0.0" },
     { "id": "flutter-production", "category": "mobile", "author": "karunendu", "version": "1.0.0" },
     { "id": "engineering-workflow", "category": "workflow", "author": "karunendu", "version": "1.0.0" },
+    { "id": "web-performance", "category": "performance", "author": "karunendu", "version": "1.0.0" },
     { "id": "ui-ux-pro-max", "category": "design", "author": "claudekit", "version": "1.0.0" },
     { "id": "ui-styling", "category": "design", "author": "claudekit", "version": "1.0.0" },
     { "id": "design", "category": "design", "author": "claudekit", "version": "2.1.0" },

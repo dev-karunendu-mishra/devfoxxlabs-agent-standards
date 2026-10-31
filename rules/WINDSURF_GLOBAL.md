@@ -33,3 +33,13 @@ Checklist (full version: the `dpdp-compliance` skill, or ~/.agents/rules/dpdp-co
    report within 72 h), processors listed, no transfer to restricted countries.
 10. Tests — consent required at sign-up, ledger rows with version/time, optional off by
     default, withdrawal works, no tracker requests before consent.
+
+# Global Rule — Web Performance (Core Web Vitals)
+
+Every website/web app passes LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1 at p75 on mobile (full version:
+the `web-performance` skill, or ~/.agents/rules/web-performance.md).
+1. LCP element server-rendered; hero image fetchpriority="high", sized, AVIF/WebP, never lazy; CDN + cached HTML.
+2. No interaction task > 50 ms: split/yield, workers, instant feedback, virtualise long lists.
+3. Every image/iframe/embed/skeleton sized; nothing pushes content; animate only transform/opacity.
+4. Initial JS ≤ 170 KB compressed per route; code-split; third parties only after consent, deferred.
+5. Lighthouse CI gate (perf ≥ 90) + web-vitals RUM without personal data.

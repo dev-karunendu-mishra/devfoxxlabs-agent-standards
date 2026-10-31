@@ -11,7 +11,14 @@
 - **Cookie Preferences Link**: Persistent link in the footer on every page allowing users to change or withdraw consent at any time.
 - **Notices**: Linked in the footer: Privacy Notice, Terms of Service, Refund Policy, Cookie Policy.
 
-## 3. Security & Best Practices
+## 3. Core Web Vitals (see `rules/web-performance.md`)
+- Targets at p75 mobile: LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1. Lighthouse CI (`lighthouserc.json`) gates every PR.
+- Server components by default; `"use client"` only on interactive leaves, never on layouts.
+- `next/image` for every image (one `priority` hero per page, `sizes` set); `next/font` for fonts; `next/script` with `lazyOnload` for third parties after consent.
+- Public pages static/ISR; slow sections streamed with `<Suspense>`; `loading.tsx` skeletons at final size.
+- Dynamic-import charts, editors, maps; initial route JS ≤ 170 KB compressed; `optimizePackageImports` for icon/util packages.
+
+## 4. Security & Best Practices
 - Never expose sensitive tokens in `NEXT_PUBLIC_*` or client bundles.
 - Validate all route handlers and server actions with Zod schemas.
 - Content Security Policy (CSP), anti-clickjacking (`X-Frame-Options`), and CSRF tokens active.

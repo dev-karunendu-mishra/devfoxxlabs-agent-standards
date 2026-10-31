@@ -100,7 +100,7 @@ offline, error or non-boolean = **off**.
 |---|---|
 | Laravel | `php artisan test` (or the touched suites), `./vendor/bin/pint --test`, PHPStan if configured |
 | NestJS / Node | `npm run lint`, `npm run build` / `tsc --noEmit`, `npm test` |
-| Next.js | `npm run lint`, `npm run build` (type-checks), tests if present |
+| Next.js | `npm run lint`, `npm run build` (type-checks), tests if present, `npx lhci autorun` for UI changes (see `web-performance`) |
 | Flutter | `flutter analyze` (0 issues), `flutter test` |
 
 - Report the exact command and the result in the reply.

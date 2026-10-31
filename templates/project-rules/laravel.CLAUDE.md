@@ -23,7 +23,13 @@ Before installing a package, check `composer.json` and `package.json`.
 - Financial, wallet, bookings, and payment mutations must execute inside `DB::transaction()` with `lockForUpdate()`.
 - No third-party API calls (Razorpay, SMS, mail, push) inside database transactions; dispatch after commit (`DB::afterCommit()`).
 
-## 4. Security & DPDP Compliance
+## 4. Core Web Vitals (see `rules/web-performance.md`)
+- Targets at p75 mobile: LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1. Lighthouse CI gates public pages.
+- Public pages server-rendered (Blade or Inertia SSR); slow props via `Inertia::defer()`; page components code-split with `import.meta.glob`.
+- Images through Spatie responsive conversions with `width`/`height`; hero `fetchpriority="high"`, everything else `loading="lazy"`.
+- No N+1 / unindexed queries before first byte; response cache for anonymous pages; OPcache + `php artisan optimize` in production.
+
+## 5. Security & DPDP Compliance
 - Authorization check on every client-sent ID (verify user owns the resource).
 - Never trust the client for money, discounts, or prices.
 - Rate limit all public write routes (`throttle:60,1` or stricter for auth/OTP).

@@ -48,3 +48,13 @@ Read before, record after, verify before done (full standard: `engineering-workf
 - Feature flags fail closed (missing = off, never `?? true`); the server enforces them.
 - Run lint/analyze/tests and report the result before claiming done.
 - Add a change-log entry per task; fix or log known gaps (🔴/🟠/🟡); owner-only tasks go in `docs/owner-todo.md`.
+
+## 6. Web Performance (Core Web Vitals)
+Every web page passes Core Web Vitals at p75 on mobile (full standard: `web-performance` skill).
+- Targets: LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1, TTFB ≤ 0.8 s.
+- LCP element server-rendered; hero image `fetchpriority="high"`, sized, AVIF/WebP, never lazy; CDN + cached HTML.
+- No interaction task > 50 ms: split/yield, workers, instant feedback, debounce, virtualise long lists.
+- Every image/iframe/embed/skeleton has its final size; nothing pushes content; animate only transform/opacity.
+- Initial JS ≤ 170 KB compressed per route; code-split heavy components; third parties only after consent, deferred.
+- Self-hosted WOFF2 fonts, `font-display: swap`, size-matched fallbacks.
+- Lighthouse CI gate (perf ≥ 90) on key routes + `web-vitals` RUM without personal data.

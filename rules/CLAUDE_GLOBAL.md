@@ -244,3 +244,31 @@ Applies to every project and stack. Full standard + doc templates: the **`engine
   ones); fix known gaps you touch, log new ones with path/impact/fix/🔴🟠🟡; owner-only tasks go in
   `docs/owner-todo.md` under a dated section and are never ticked off without my confirmation.
 - Write this rule (or a pointer to it) into each project's own rules file when setting a project up.
+
+# Global Rule — Web Performance: pass Core Web Vitals on every page
+
+Applies to every website, web app and admin panel (Next.js/React, Laravel Blade/Inertia + Vite,
+Vue/Nuxt, Astro, plain HTML). Built with each page, not tuned later. Full standard + Lighthouse CI
+and RUM templates: the **`web-performance`** skill.
+
+- **Targets at p75, mobile first:** LCP ≤ 2.5 s · INP ≤ 200 ms · CLS ≤ 0.1 (TTFB ≤ 0.8 s). Test on
+  Lighthouse mobile / a mid-range phone on 4G, not a dev laptop.
+- **LCP:** the LCP element is in server-rendered HTML (SSR/SSG/ISR for public pages, never behind a
+  client fetch); hero image `fetchpriority="high"`, sized, AVIF/WebP, `srcset`, **never lazy**; CDN +
+  cached HTML + no slow queries before first byte; no render-blocking third-party CSS/JS; self-hosted
+  WOFF2 fonts with `font-display: swap` and size-matched fallbacks.
+- **INP:** no main-thread task > 50 ms on interaction — split and yield, Web Worker or server for heavy
+  work; instant visual feedback; `useTransition`/`useDeferredValue`; debounce inputs; virtualise long
+  lists; server components / islands by default.
+- **CLS:** every image/video/iframe/embed/ad/skeleton has its final size (`width`/`height` or
+  `aspect-ratio`); nothing inserted above the reader; cookie banner is a fixed overlay; animate only
+  `transform`/`opacity`.
+- **JS budget per route:** initial JS ≤ 170 KB compressed; code-split heavy components (charts,
+  editors, maps); tree-shaken named imports; state the size of any new dependency. Third parties load
+  only after consent and then deferred / on interaction / via click-to-load facades. No `unload`.
+- **Images & caching:** framework image pipeline (`next/image`, Spatie responsive images), lazy below
+  the fold; fingerprinted assets `max-age=31536000, immutable`; ETag / SWR on APIs.
+- **Gate:** Lighthouse CI on key routes (performance ≥ 90, LCP, CLS, TBT, JS budget) fails the build
+  on regression; `web-vitals` RUM to our own rate-limited endpoint with no personal data; record
+  before/after numbers in the change log for UI changes.
+- Write this rule (or a pointer to it) into each web project's own rules file when setting it up.
