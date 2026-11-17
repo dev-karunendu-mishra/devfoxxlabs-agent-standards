@@ -23,6 +23,7 @@ Think like an attacker before writing code.
 - 2-min threat model before every feature.
 - Authorization on the server, deny by default. Verify ownership and object ID relations on every request.
 - Never trust client for money, pricing, fees, or roles. Server computes all money.
+- Every on/off switch (feature flag, setting, kill switch) is re-checked on the server in middleware and the shared service; off in the UI never means off in the backend. Refuse when off, proceed only when explicitly on (fail-closed); hide it in the UI too, and test the refusal.
 - MFA mandatory for admin paths. Only verified phone/email can sign in. Single-use, short-lived OTPs.
 - Server-side allow-list validation. Bound parameters/ORM only.
 - Strict rate limits on all public write endpoints.

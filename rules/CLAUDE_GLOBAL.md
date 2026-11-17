@@ -145,6 +145,11 @@ endpoint, auth flow, upload, payment, AI feature, dependency or deploy change, a
 - **Never trust the client** for price, amount, discount, fee, payout, role, status, user_id, verified
   flags. The server computes money; payments verified by signature on the server, idempotent, row-locked.
   No mock/test/skip-payment paths, demo users or seeders reachable in production.
+- **Every switch is enforced on the server too — the UI is never the guard:** a feature, flag, setting or
+  kill switch that is off in the frontend is never assumed off in the backend. Every endpoint, service method
+  and job re-checks the switch itself, refuses when it is off (404/403/503) and proceeds only when it is
+  explicitly on (fail-closed). Guard both sides: hide/disable it in web + app (UX) **and** check it in route
+  middleware **and** the shared service (so a new route can't skip it); a test proves the endpoint refuses when off.
 - **Auth:** MFA mandatory for admins on every sign-in path; every path (password, OTP, social, restore,
   API) enforces the same checks; only **verified** phone/email can sign in or recover; OTPs random,
   hashed, single-use, short-lived, attempt-limited; revoke other sessions on password/email/role change.
